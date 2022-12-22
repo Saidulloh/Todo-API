@@ -42,6 +42,7 @@ REQUIREMENTS = [
     'rest_framework',
     'rest_framework_swagger',
     'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 DJANGO_APPS = [
@@ -151,5 +152,9 @@ AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     # for swagger
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    # for jwt
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
