@@ -1,10 +1,20 @@
 from django.db import models
 
+from apps.users.models import User
+
 
 class Todo(models.Model):
     """
     Model for todo list
     """
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='owner',
+        verbose_name='owner',
+        null=True,
+        blank=True
+    )
     title = models.CharField(
         max_length=256,
         unique=True,
