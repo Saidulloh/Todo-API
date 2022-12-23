@@ -1,6 +1,7 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView, DestroyAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.permissions import IsAuthenticated
 
 from apps.todo.models import Todo
 from apps.todo.serializers import TodoSerializer
@@ -19,6 +20,7 @@ class TodoRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 class TodoListCreateAPIView(ListCreateAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+    permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter, OrderingFilter]
     filter_fields = [
         'title',
