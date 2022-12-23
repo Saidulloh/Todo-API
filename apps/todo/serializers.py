@@ -12,5 +12,6 @@ class TodoSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'is_completed',
-            'image'
+            'image',
+            'created_at'
         )
