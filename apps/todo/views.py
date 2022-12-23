@@ -39,9 +39,9 @@ class TodoListCreateAPIView(ListCreateAPIView):
         title = self.request.query_params.get('title')
         created_at = self.request.query_params.get('created_at')
         if title and created_at:
-            queryset = Todo.objects.filter(owner_id=self.request.user.id, title=title, created_at=created_at)
+            queryset = Todo.objects.filter(owner_id=self.request.user.id, title__icontains=title, created_at=created_at)
         elif title:
-            queryset = Todo.objects.filter(owner_id=self.request.user.id, title=title)
+            queryset = Todo.objects.filter(owner_id=self.request.user.id, title__icontains=title)
         elif created_at:
             queryset = Todo.objects.filter(owner_id=self.request.user.id, created_at=created_at)
         else:
