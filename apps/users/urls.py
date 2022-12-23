@@ -1,12 +1,10 @@
-from rest_framework.routers import DefaultRouter
+from rest_framework.urls import path
 
-from apps.users.views import UserApiViewSet
+from apps.users.views import UserRetrieveUpdateDestroyAPIView, UserListAPIView, UserCreateAPIView
 
 
-router = DefaultRouter()
-router.register(
-    prefix="",
-    viewset=UserApiViewSet
-)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('<int:pk>/', UserRetrieveUpdateDestroyAPIView.as_view()),
+    path('', UserListAPIView.as_view()),
+    path('<int:pk>/', UserCreateAPIView.as_view()),
+]
