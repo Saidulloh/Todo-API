@@ -1,11 +1,10 @@
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-from apps.todo.views import TodoApiViewSet
+from apps.todo.views import TodoRetrieveUpdateDestroyAPIView, TodoListCreateAPIView, DeleteAllTasksAPIView
 
-router = DefaultRouter()
-router.register(
-    prefix="",
-    viewset=TodoApiViewSet
-)
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('<int:pk>/', TodoRetrieveUpdateDestroyAPIView.as_view()),
+    path('', TodoListCreateAPIView.as_view()),
+    path('delete/', DeleteAllTasksAPIView.as_view())
+]
