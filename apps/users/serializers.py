@@ -24,12 +24,14 @@ class UserCreateSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
+            'id',
             'username',
             'email',
+            'create_at',
             'phone_number',
             'age',
         )
