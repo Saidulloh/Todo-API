@@ -33,7 +33,9 @@ class Todo(models.Model):
     )
     image = models.ImageField(
         upload_to='todo_images/',
-        verbose_name='image'
+        verbose_name='image',
+        null=True,
+        blank=True
     )
 
     def __str__(self):
